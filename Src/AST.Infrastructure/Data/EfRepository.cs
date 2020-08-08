@@ -72,7 +72,7 @@ namespace AST.Infrastructure.Data
         {
             ThrowIf.Argument.IsNull(entity);
 
-            _dbContext.Set<TEntity>().AddAsync(entity);
+            await _dbContext.Set<TEntity>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
 
             return entity;
@@ -82,7 +82,7 @@ namespace AST.Infrastructure.Data
         {
             ThrowIf.Argument.IsNull(entities);
 
-            _dbContext.Set<TEntity>().AddRangeAsync(entities);
+            await _dbContext.Set<TEntity>().AddRangeAsync(entities);
             return await _dbContext.SaveChangesAsync();
         }
 
