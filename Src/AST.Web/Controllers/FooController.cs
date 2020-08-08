@@ -15,7 +15,7 @@ namespace AST.Web.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Hello world");
+            return Ok(_fooService.GetAll());
         }
     }
 }

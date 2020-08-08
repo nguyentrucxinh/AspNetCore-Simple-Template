@@ -1,6 +1,7 @@
 using AST.Core.Entities;
 using AST.Core.Interfaces;
 using AST.Application.Interfaces;
+using System.Collections.Generic;
 
 namespace AST.Application.Services
 {
@@ -11,6 +12,11 @@ namespace AST.Application.Services
         public FooService(IRepository<Foo> fooRepository)
         {
             _fooRepository = fooRepository;
+        }
+
+        IEnumerable<Foo> IFooService.GetAll()
+        {
+            return _fooRepository.GetAll();
         }
     }
 }

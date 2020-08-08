@@ -10,9 +10,15 @@ namespace AST.Web.Common.StartupExtensions
     {
         public static IServiceCollection AddCustomizedDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(
-                options => SqlServerDbContextOptionsExtensions.UseSqlServer(
-                    options, configuration.GetValue<string>("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options => {
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+                // if (!env.IsProduction())
+                // {
+                    options.EnableDetailedErrors();
+                    options.EnableSensitiveDataLogging();
+                // }
+            });
 
             return services;
         }
