@@ -9,6 +9,7 @@
 # Nuget packages
 - FluentValidator
 - Polly
+- Refit
 - xUnit
 - Moq
 - FluentAssertions

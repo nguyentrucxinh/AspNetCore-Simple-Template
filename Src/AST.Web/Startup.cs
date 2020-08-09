@@ -29,8 +29,7 @@ namespace AST.Web
         {
             services.AddCustomizedDatabase(Configuration);
             services.AddCustomizedAuth(Configuration);
-            // services.AddCustomizedHttp(Configuration);
-            services.AddCustomizedDependencyInjection(Configuration);
+            services.AddCustomizedHttp(Configuration);
             services.AddCustomizedSwagger(_env);
             services.AddCustomizedHealthCheck(Configuration, _env);
             RegisterServices(services);
@@ -64,6 +63,7 @@ namespace AST.Web
         private static void RegisterServices(IServiceCollection services)
         {
             // Adding dependencies from another layers (isolated from Presentation)
+            services.AddCustomizedDependencyInjection();
         }
     }
 }
