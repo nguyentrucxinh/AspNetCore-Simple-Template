@@ -7,13 +7,12 @@
 - MSSQL
 
 # Nuget packages
-- AutoMapper
 - FluentValidator
 - Polly
 - xUnit
 - Moq
 - FluentAssertions
-- NSwag
+- NSwag.AspNetCore
 - AspNetCore.HealthChecks
 
 # Design Patterns
