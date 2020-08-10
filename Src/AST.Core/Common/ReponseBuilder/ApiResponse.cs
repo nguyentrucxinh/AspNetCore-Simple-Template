@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace AST.Web.Common.ResponseBuilder
+namespace AST.Core.Common.ResponseBuilder
 {
     [DataContract]
     public class ApiResponse<T>
@@ -19,5 +19,8 @@ namespace AST.Web.Common.ResponseBuilder
 
         [DataMember(EmitDefaultValue = false)]
         public T Result { get; set; }
+
+        [DataMember]
+        public string DebugMessage { get; set; }
     }
 }

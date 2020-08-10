@@ -1,6 +1,7 @@
 using System;
+using System.Net;
 
-namespace AST.Web.Common.ResponseBuilder
+namespace AST.Core.Common.ResponseBuilder
 {
     public class ApiResponseBuilder<T>
     {
@@ -38,6 +39,40 @@ namespace AST.Web.Common.ResponseBuilder
             if (result != null)
             {
                 apiResponse.Result = result;
+            }
+            return this;
+        }
+
+        public ApiResponseBuilder<T> DebugMessage(in string message)
+        {
+            if (message != null)
+            {
+                apiResponse.DebugMessage = message;
+            }
+            return this;
+        }
+
+        // Quick method
+        public ApiResponseBuilder<T> Success(in T result, in string message = null)
+        {
+            StatusCode((int)HttpStatusCode.OK);
+            if (message != null)
+            {
+                apiResponse.Message = message;
+            }
+            if (result != null)
+            {
+                apiResponse.Result = result;
+            }
+            return this;
+        }
+
+        public ApiResponseBuilder<T> Error(in string message = null)
+        {
+            StatusCode((int)HttpStatusCode.InternalServerError);
+            if (message != null)
+            {
+                apiResponse.Message = message;
             }
             return this;
         }
