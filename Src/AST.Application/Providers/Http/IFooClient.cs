@@ -3,7 +3,7 @@ using Refit;
 
 namespace AST.Application.Providers
 {
-    public interface IBar
+    public interface IFooClient
     {
         [Get("/")]
         Task<object> GetAll();

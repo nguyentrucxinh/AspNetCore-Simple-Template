@@ -11,13 +11,13 @@ namespace AST.Web.Common.StartupExtensions
         public static IServiceCollection AddCustomizedHttp(this IServiceCollection services, IConfiguration configuration)
         {
             services
-                .AddHttpClient("Bar", c =>
+                .AddHttpClient("Foo", c =>
                 {
-                    c.BaseAddress = new Uri(configuration.GetValue<string>("HttpClients:Bar"));
+                    c.BaseAddress = new Uri(configuration.GetValue<string>("HttpClients:Foo"));
                     // c.DefaultRequestHeaders.Add("", "");
                 })
-                .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500)))
-                .AddTypedClient(c => Refit.RestService.For<IBar>(c));
+                .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)))
+                .AddTypedClient(c => Refit.RestService.For<IFooClient>(c));
 
             return services;
         }
