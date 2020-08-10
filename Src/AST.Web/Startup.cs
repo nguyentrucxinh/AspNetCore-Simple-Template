@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AST.Web.Common.StartupExtensions;
+using AST.Web.Common.Middlewares;
 
 namespace AST.Web
 {
@@ -50,6 +51,8 @@ namespace AST.Web
             app.UseRouting();
 
             app.UseCustomizedAuth();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
