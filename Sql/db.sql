@@ -5,9 +5,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
+
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Foos]') AND type IN ('U'))
+	DROP TABLE [dbo].[Foos]
+GO
+
 CREATE TABLE [dbo].[Foos](
-	[Id] [uniqueidentifier] NOT NULL,
-	[Foo] [varchar](100) NOT NULL,
+    [Id] int  IDENTITY(1,1) NOT NULL,
+	[Bar] [varchar](100) NOT NULL,
 	[FooBar] [varchar](100) NOT NULL,
 	[CreatedAt] [datetime2](7) NOT NULL,
 	[CreatedBy] INT NOT NULL,

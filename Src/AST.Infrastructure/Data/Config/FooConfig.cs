@@ -8,6 +8,7 @@ namespace AST.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Foo> builder)
         {
+            builder.HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }
